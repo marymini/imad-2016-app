@@ -3,7 +3,12 @@ body {
     background-color: lightgrey;
     margin-top: 60px;
 }
-
+h1{
+    text-decoration:underline;
+}
+p {
+    color:grey;
+}
 .center {
     text-align: center;
 }
