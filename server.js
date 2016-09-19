@@ -43,7 +43,23 @@ var articles={
          This is the content of my Third article.
         </p>
         `
-    } 
+    } ,
+    'practice1':{
+        title:'My Additional Practie One',
+        headng:'Practice One',
+        date:'Sep 19 2016',
+        content:
+        `
+    <p>
+    Types of Viruses</p>
+    <HR size=4 width=50% color="red"><center>
+    <p align ="left" ><u><b>Boot Sector Virus</b></u><br>
+    These viruses infect the boot record which is responsible 
+    for loading the operating system in the memory.Boot sector virus becomes active at the time of booting.
+    Examples-Disk killer,Stone virus </p>
+    
+        `
+        }
 };
 function createTemplate(data) {
     var title=data.title;
