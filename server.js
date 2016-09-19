@@ -44,7 +44,7 @@ var articles={
         </p>
         `
     } ,
-    'practice1':{
+    'article4':{
         title:'My Additional Practie One',
         headng:'Practice One',
         date:'Sep 19 2016',
