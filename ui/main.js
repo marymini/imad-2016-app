@@ -5,5 +5,5 @@ element.innerHthml="The Text Value Changed";
 
 var img=document.getElementById('madi');
 img.onclick = function() {
-img.style.marginLeft='500px';
+img.style.marginLeft='100px';
 };
