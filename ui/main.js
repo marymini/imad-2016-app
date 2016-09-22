@@ -5,3 +5,7 @@ var img=document.getElementByID('madi');
 img.onClick=function() {
     img.style.marginleft='100px';
     };
+    var img=document.getElementByID('madi');
+    img.OnClick=function(){
+        img.style.marginleft='100px';
+    };
