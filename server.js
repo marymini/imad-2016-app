@@ -94,7 +94,7 @@ function createTemplate(data) {
    `;
     return htmlTemplate;
 }
-counter=0;
+var counter=0;
 app.get('/counter',function(req,res){
    counter=counter+1;
    re.send(counter.toString()); 
