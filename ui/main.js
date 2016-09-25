@@ -22,6 +22,6 @@ button.onclick=function(){
     // Make Request
     
     
-    request.open('GET','http://marymini.imad.hasura-app.io/counter',true)
+    request.open('GET','http://marymini.imad.hasura-app.io/counter',true);
     request.send(null);
 };
