@@ -20,13 +20,12 @@ button.onclick=function(){
     
     // Make Request
     
-    var nameInput=document.getElementById('name');
-var name=nameInput.value;
+
     request.open('GET','http://marymini.imad.hasura-app.io/counter',true);
     request.send(null);
 };
 
-
+   
 var submit=document.getElementById('submit_btn');
 submit.onclick=function() {
     
@@ -43,7 +42,8 @@ ul.innerHTML=list;
         }
         }
     };
-
+ var nameInput=document.getElementById('name');
+var name=nameInput.value;
  request.open('GET','http://marymini.imad.hasura-app.io/submit-name?name=+name',true);
     request.send(null);
 };
