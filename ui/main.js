@@ -10,7 +10,7 @@ button.onclick=function(){
     
     request.onreadystatechange=function() {
         if(request.readystate===XMLHttpRequest.DONE) {
-            if(request.status===200) {
+            if(request.status==200) {
                 var counter=request.responseText;
                 var span=document.getElementById('count');
                 sapn.innerHTML=counter.toString();
@@ -31,8 +31,8 @@ submit.onclick=function() {
     
      var request=new XMLHttpRequest();
     request.onreadystatechange=function() {
-        if(request.readystate===XMLHttpRequest.DONE) {
-            if(request.status===200) {
+        if(request.readystate==XMLHttpRequest.DONE) {
+            if(request.status==200) {
                var names=['name1','name2','name3'];
     for(var i=0;i<names.length;i++) {
         list+='<li>'+name[i]+'</li>';
