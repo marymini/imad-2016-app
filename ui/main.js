@@ -1,29 +1,29 @@
-//var button=document.getElementById('counter');
-//button.onclick=function(){
+var button=document.getElementById('counter');
+button.onclick=function(){
     
     //Create a Request Object
- //   var request=new XMLHttpRequest();
+    var request=new XMLHttpRequest();
     
     
     
     //Capture the response and store it in a variable
     
- //   request.onreadystatechange=function() {
- ////       if(request.readystate==XMLHttpRequest.DONE) {
- //           if(request.status==200) {
- //              var counter=request.responseText;
-  //             var span=document.getElementById('counter');
-  //            span.innerHTML=counter.toString();
-  //         }
-  //      }
-  //  };
+   request.onreadystatechange=function() {
+        if(request.readystate==XMLHttpRequest.DONE) {
+           if(request.status==200) {
+               var counter=request.responseText;
+               var span=document.getElementById('count');
+              span.innerHTML=counter.toString();
+           }
+        }
+    };
     
     // Make Request
     
 
- //  request.open('GET','http://marymini.imad.hasura-app.io/count',true);
- //   request.send(null);
-//};
+   request.open('GET','http://marymini.imad.hasura-app.io/count',true);
+    request.send(null);
+};
 
    
 var submit=document.getElementById('submit_btn');
