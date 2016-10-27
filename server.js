@@ -10,28 +10,15 @@ var articles={
         heading:'Article1 Mini Shaji',
         date:'Sep 5 ,2016',
         content:`
-        <p>
-        This is the content of my first article.This is the content of my first article.This is the content of my first article.
-        This is the content of my first article.This is the content of my first article.This is the content of my first article.
-        </p>
-        <p>
-        This is the content of my first article.This is the content of my first article.This is the content of my first article.
-        This is the content of my first article.This is the content of my first article.This is the content of my first article.
-        </p>
-        <p>
-        This is the content of my first article.This is the content of my first article.This is the content of my first article.
-        This is the content of my first article.This is the content of my first article.This is the content of my first article.
-        </p>
+       
         `
     },
    'article2':{
-        title:'Article2 Mini',
+       title:'Article2 Mini',
         heading:'Article2 Specky',
         date:'Sep 15 ,2016',
         content:`
-        <p>
-         This is the content of my second article.
-        </p>
+       
         `
     },
    'article3':{
@@ -39,9 +26,7 @@ var articles={
         heading:'Article3 Specky Shaji',
         date:'Sep 17 ,2016',
         content:`
-        <p>
-         This is the content of my Third article.
-        </p>
+       
         `
     } ,
     'article4':{
@@ -49,13 +34,7 @@ var articles={
         headng:'Practice One',
         date:'Sep 19 2016',
         content:`
-    <p> Types of Viruses</p>
-    <HR size=4 width=50% color="red"><center>
-    <p align ="left" ><u><b>Boot Sector Virus</b></u><br>
-    These viruses infect the boot record which is responsible 
-    for loading the operating system in the memory.Boot sector virus becomes active at the time of booting.
-    Examples-Disk killer,Stone virus 
-    </p>
+   
     
         `
         }
@@ -109,10 +88,23 @@ app.get('/submit-name',function(req,res) {
     names.push(name);
     res.send(JSON.stringify(names));
 });
-
-app.get('/:articleName',function(req,res){
-    var articleName=req.params.articleName;
-    res.send(createTemplate(articles[articleName]));
+var pool=new pool(config);
+app.get('articles//:articleName',function(req,res){
+    
+    pool.query("select * from article where title='"+req.params.articleName+"'",function(err,result){
+        if (err) {
+            res.status(500).send(err.Tostring());
+        } else {
+            if(result.rows.legth===0){
+                re.status(404).send('Article Not found');
+                
+            } else{
+                var articleData=result.rows[0];
+                res.send(createTemplate(articleData));
+            }
+            
+        }
+    })
  });
 
 
