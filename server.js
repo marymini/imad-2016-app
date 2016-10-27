@@ -13,39 +13,7 @@ var config={
 var app = express();
 app.use(morgan('combined'));
 var articles={
-    'article1':{
-        title:'Article1 Mini Shaji',
-        heading:'Article1 Mini Shaji',
-        date:'Sep 5 ,2016',
-        content:`
-       
-        `
-    },
-   'article2':{
-       title:'Article2 Mini',
-        heading:'Article2 Specky',
-        date:'Sep 15 ,2016',
-        content:`
-       
-        `
-    },
-   'article3':{
-        title:'Article3 Specky',
-        heading:'Article3 Specky Shaji',
-        date:'Sep 17 ,2016',
-        content:`
-       
-        `
-    } ,
-    'article4':{
-        title:'My Additional Practie One',
-        headng:'Practice One',
-        date:'Sep 19 2016',
-        content:`
    
-    
-        `
-        }
 };
 function createTemplate(data) {
     var title=data.title;
@@ -85,6 +53,7 @@ function createTemplate(data) {
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
 var counter=0;
 app.get('/counter',function(req,res){
  counter=counter+1;
@@ -96,6 +65,7 @@ app.get('/submit-name',function(req,res) {
     names.push(name);
     res.send(JSON.stringify(names));
 });
+
 var pool=new pool(config);
 app.get('articles//:articleName',function(req,res){
     
