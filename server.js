@@ -52,6 +52,17 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var pool=new pool(config);
+app.get('test-db',function(req,re){
+    pool.query("select * from test",function(req,re){
+      if(err){
+          res.status(500).send(err.toString);
+      }  else {
+          res.send(JSON.stringify(result,rows));
+      }
+    });
+});
+
 var counter=0;
 app.get('/counter',function(req,res){
  counter=counter+1;
@@ -64,7 +75,7 @@ app.get('/submit-name',function(req,res) {
     res.send(JSON.stringify(names));
 });
 
-var pool=new pool(config);
+
 app.get('articles//:articleName',function(req,res){
     
     pool.query("select * from article where title='"+req.params.articleName+"'",function(err,result){
