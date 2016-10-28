@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool=require('pg').pool;
+var Pool=require('pg').Pool;
 
 var config={
     user:'marymini',
@@ -52,7 +52,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-var pool=new pool(config);
+var Pool=new Pool(config);
 app.get('test-db',function(req,re){
     pool.query("select * from test",function(req,re){
       if(err){
@@ -78,7 +78,7 @@ app.get('/submit-name',function(req,res) {
 
 app.get('articles//:articleName',function(req,res){
     
-    pool.query("select * from article where title='"+req.params.articleName+"'",function(err,result){
+    pool.query("select * from article where title=$1",[req.params.articleName],function(err,result){
         if (err) {
             res.status(500).send(err.Tostring());
         } else {
