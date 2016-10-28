@@ -76,7 +76,7 @@ app.get('/submit-name',function(req,res) {
 });
 
 
-app.get('articles//:articleName',function(req,res){
+app.get('/articles/:articleName',function(req,res){
     
     pool.query("select * from article where title=$1",[req.params.articleName],function(err,result){
         if (err) {
