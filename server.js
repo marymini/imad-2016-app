@@ -1,79 +1,17 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var Pool=require('pg').Pool;
 
-var config={
-    user:'marymini',
-    database:'marymini',
-    host:'db.imad.hasura-app.io',
-    port:'5432',
-    password:DB_PASSWORD,
-};
+
+
 var app = express();
 app.use(morgan('combined'));
 
-function createTemplate(data) {
-    var title=data.title;
-    var date=data.date;
-    var heading=data.heading;
-    var content=data.content;
-    var htmlTemplate=`
-    <html>
-    <head>
-    <title>
-    ${title}
-    </title>
-     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link href="/ui/style.css" rel="stylesheet"/>
-    </head>
-   <body>
-   <div class="container">
-   <div>
-   <a href="/">HOME</a>
-
-   </div>
-   <hr/>
-   <h3>
-   ${heading}
-   </h3>
-   <div>
-   ${date.toDateString()}
-   </div>
-   <div>
-   ${content}
-   </div>
-      </body>
-   
-       </html>
-   `;
-    return htmlTemplate;
-}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-
-
-
-app.get('/articles/:articleName',function(req,res){
-    
-    pool.query("select * from article where title=$1",[req.params.articleName],function(err,result){
-        if (err) {
-            res.status(500).send(err.Tostring());
-        } else {
-            if(result.rows.legth===0){
-                re.status(404).send('Article Not found');
-                
-            } else{
-                var articleData=result.rows[0];
-                res.send(createTemplate(articleData));
-            }
-            
-        }
-    });
- });
 
 
 app.get('/ui/style.css', function (req, res) {
