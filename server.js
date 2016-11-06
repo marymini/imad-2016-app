@@ -26,8 +26,10 @@ function createTemplate(data) {
     </title>
      <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <link href="/ui/style.css" rel="stylesheet"/>
+    </head>
    <body>
    <div class="container">
+   <div>
    <a href="/">HOME</a>
 
    </div>
@@ -52,16 +54,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-var pool=new Pool(config);
-app.get('test-db',function(req,re){
-    pool.query("select * from test",function(req,re){
-      if(err){
-          res.status(500).send(err.toString);
-      }  else {
-          res.send(JSON.stringify(result,rows));
-      }
-    });
-});
 
 
 
