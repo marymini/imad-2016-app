@@ -53,17 +53,13 @@ app.get('/', function (req, res) {
 
 var pool=new Pool(config);
 app.get('/articles/:articleName',function(req,res){
-    pool.query("select * from article where title=$1",[req.params.articleName],function(err,result){
+    pool.query("select * from article" ,function(err,result){
         if(err){
             res.status(500).send(err.toString());
                     } else {
-                        if(result.length===0){
-                            res.status(404).send("Not Found");
-                                                    }else{
-                                                        var articleData=result.rows[0];
-                                                        res.send(createTemplate(articleData));
+                  res.send(createTemplate(articleData));
                                                     }
-                    }
+               
     });
 });
 
