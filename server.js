@@ -57,6 +57,7 @@ app.get('/articles/:articleName',function(req,res){
         if(err){
             res.status(500).send(err.toString());
                     } else {
+                        var articleData=result.rows[0];
                   res.send(createTemplate(articleData));
                                                     }
                
