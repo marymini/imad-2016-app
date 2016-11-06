@@ -10,7 +10,7 @@ var config={
 };
 var app = express();
 app.use(morgan('combined'));
-
+var articles=[];
 
 function createTemplate(data){
     var title=data.title;
@@ -36,7 +36,7 @@ function createTemplate(data){
     ${heading}
     </h3>
     <div>
-    ${date}
+    ${date.toDateString()}
     </div>
     <div>
     ${content}
